@@ -10,7 +10,7 @@ import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg'
 import homeIcon from '../assets/svg/homeIcon.svg'
 
 
-
+//working on delete
 
 function Profile() {
   const auth = getAuth()
