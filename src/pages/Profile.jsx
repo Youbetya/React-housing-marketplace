@@ -10,8 +10,6 @@ import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg'
 import homeIcon from '../assets/svg/homeIcon.svg'
 
 
-//working on delete
-
 function Profile() {
   const auth = getAuth()
   const [loading, setLoading] = useState(true)
@@ -81,13 +79,15 @@ const onChange = (e) => {
 }
 
 const onDelete = async (listingId) => {
-  if(window.confim('Are you sure you want to delete?')) {
+  if(window.confirm('Are you sure you want to delete?')) {
     await deleteDoc(doc(db, 'listings', listingId))
     const updatedListings = listings.filter((listing) => listing.id !== listingId)
     setListings(updatedListings)
     toast.success('Succesfully deleted listing')
   }
 }
+
+const onEdit = (listingId) => navigate(`/edit-listing/${listingId}`)
 
   return <div className='profile'>
     <header className="profileHeader">
@@ -138,7 +138,7 @@ const onDelete = async (listingId) => {
         <ul className="listingsList">
           {listings.map((listing) =>(
             <ListingItem key={listing.id} listing={listing.data} id={listing.id}
-              onDelete={() => onDelete(listing.id)}/>
+              onDelete={() => onDelete(listing.id)} onEdit={() => onEdit(listing.id)}/>
           ))}
         </ul>
         </>
