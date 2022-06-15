@@ -43,6 +43,10 @@ if(loading) {
   return <Spinner />
 }
 
+if(listing.length === 0) {
+  return <></>
+}
+
 
   return <main>
     <Swiper

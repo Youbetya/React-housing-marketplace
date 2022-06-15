@@ -11,7 +11,6 @@ function Offers () {
   const [listings, setListings] = useState(null)
   const [loading, setLoading] = useState(true)
   const [lastFetchedListing, setLastFetchedListing] = useState(null)
-  const [noMoreListings, setNoMoreListings] = useState(true);
 
   const params = useParams()
 
@@ -78,7 +77,7 @@ function Offers () {
           data: doc.data(),
         })
       })
-      setNoMoreListings(querySnap.empty);
+
       setListings((prevState) => [...prevState, ...listings])
       setLoading(false)
     } catch (error) {
@@ -103,19 +102,18 @@ function Offers () {
         </ul>
       </main>
 
-      <br />
-       <br />
-       {noMoreListings ? (
-         <p>
-           No More Listings
-         </p>
-       ) : (
-         <p className='loadMore' onClick={onFetchMoreListings}>
-           Load More
-         </p>
-       )}
-      </> :
-      <p>There are no current offers</p>}
+        <br />
+        <br />
+               {lastFetchedListing && (
+                 <p className='loadMore' onClick={onFetchMoreListings}>
+                   Load More
+                 </p>
+               )}
+             </>
+            : (
+             <p>No listings for {params.categoryName}</p>
+           )}
+
   </div>
 }
 

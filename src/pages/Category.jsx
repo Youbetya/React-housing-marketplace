@@ -106,14 +106,17 @@ function Category () {
       </main>
 
       <br />
-      <br />
-      {lastFetchedListing && (
-        <p className='loadMore' onClick={onFetchMoreListings}>
-          Load More
-        </p>
-      )}
-      </> :
-      <p>No listings for {params.categoryName}</p>}
+               <br />
+               {lastFetchedListing && (
+                 <p className='loadMore' onClick={onFetchMoreListings}>
+                   Load More
+                 </p>
+               )}
+             </>
+            : (
+             <p>No listings for {params.categoryName}</p>
+           )}
+         
   </div>
 }
 
