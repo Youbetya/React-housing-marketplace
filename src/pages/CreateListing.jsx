@@ -97,7 +97,7 @@ function CreateListing() {
 
   } else {
     geolocation.lat = latitude
-    geolocation.lng = Longitude
+    geolocation.lng = longitude
   }
 
   // store images in firebase
