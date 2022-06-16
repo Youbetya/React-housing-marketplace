@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import {Link, useNavigate, useParams} from 'react-router-dom'
 import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation, Pagination, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -76,8 +76,12 @@ if(listing.length === 0) {
 
     <div className="listingDetails">
       <p className="listingName">{listing.name} - ${listing.offer
-          ? listing.discountedPrice .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-          : listing.regularPrice .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+          ? listing.discountedPrice
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+          : listing.regularPrice
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
         </p>
         <p className='listingLocation'>{listing.location}</p>
         <p className="listingType">
